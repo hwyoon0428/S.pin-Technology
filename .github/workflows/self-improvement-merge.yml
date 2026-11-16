@@ -1,0 +1,23 @@
+name: Merge self-improvement PR
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+    branches: [main]
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  merge:
+    if: >-
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.user.login == github.repository_owner &&
+      startsWith(github.event.pull_request.head.ref, 'self-improvement/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge or queue when checks pass
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr merge "$PR_NUMBER" --merge --auto
