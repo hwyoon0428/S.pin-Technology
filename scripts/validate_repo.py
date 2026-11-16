@@ -46,6 +46,9 @@ def validate(root: Path = ROOT):
                 problems.append("Missing safe-merge guard: " + guard)
         if "pull_request_target:" in content:
             problems.append("Do not run privileged auto-merge on pull_request_target")
+        for number, line in enumerate(content.splitlines(), 1):
+            if "${{" in line and "}}" not in line:
+                problems.append("Unclosed Actions expression on line " + str(number))
     return problems
 
 
