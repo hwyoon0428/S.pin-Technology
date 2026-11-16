@@ -17,12 +17,12 @@ jobs:
     steps:
       - name: Verify exact PR head, ownership, and successful validation
         env:
-          GH_TOKEN: ${{ github.token }
-          GH_REPO: ${{ github.repository }
-          REPO_OWNER: ${{ github.repository_owner }
-          RUN_REPO: ${{ github.event.workflow_run.head_repository.full_name }
-          RUN_BRANCH: ${{ github.event.workflow_run.head_branch }
-          RUN_SHA: ${{ github.event.workflow_run.head_sha }
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          RUN_REPO: ${{ github.event.workflow_run.head_repository.full_name }}
+          RUN_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          RUN_SHA: ${{ github.event.workflow_run.head_sha }}
         shell: bash
         run: |
           set -euo pipefail
