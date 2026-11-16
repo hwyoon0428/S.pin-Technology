@@ -5,3 +5,4 @@
 - [에이전트 작업 지침](AGENTS.md)
 - [프로젝트 문서](docs/README.md)
 - [설계 결정 기록](docs/decisions/README.md)
+- [자가개선 루프](docs/self-improvement.md)
